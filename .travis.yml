@@ -5,5 +5,5 @@ services:
   - mysql
 sudo: false
 install: true
-before_script: travis_wait 45 ./mvnw install -q -U -DskipTests=true -Pfast -Dmaven.test.redirectTestOutputToFile=true
-script: ./mvnw install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
+before_script: travis_wait 45 ./mvn install -q -U -DskipTests=true -Pfast -Dmaven.test.redirectTestOutputToFile=true
+script: ./mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
