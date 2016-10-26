@@ -21,9 +21,9 @@ public class RemoteController {
     @Autowired
     private RefineService refineService;
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
     public ResponseEntity<String> receiveController(@RequestBody Information information,
-                                                    @RequestParam("message") String message) {
+                                                    @RequestParam(name = "message") String message) {
 
         if (InputCheck.check(message)) {
 

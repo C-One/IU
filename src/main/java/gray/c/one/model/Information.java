@@ -1,5 +1,6 @@
 package gray.c.one.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -8,15 +9,11 @@ import java.time.LocalDateTime;
  * Created by jykang on 2016. 10. 20..
  */
 @Data
+@AllArgsConstructor
 public class Information {
 
     private Location location;
-    private LocalDateTime time;
+    private String time;
 
-    @Data
-    private class Location {
-
-        private double x;
-        private double y;
-    }
+    public Information(){}
 }
