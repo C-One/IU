@@ -1,6 +1,5 @@
 package gray.c.one.util;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
@@ -10,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Created by jykang on 2016. 7. 14..
@@ -20,14 +20,23 @@ public class RestClient {
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
-    @Value("${naver.api.host}")
-    private String host;
+    private static String host;
 
-    @Value("${naver.api.client.id}")
-    private String clientId;
+    private static  String clientId;
 
-    @Value("${naver.api.client.secret}")
-    private String clientSecret;
+    private static String clientSecret;
+
+    static {
+        try {
+            Properties properties = PropertiesLoader.fromResource("naver-api.properties");
+            host = properties.getProperty("naver.api.host");
+            clientId = properties.getProperty("naver.api.client.id");
+            clientSecret = properties.getProperty("naver.api.client.secret");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 //    private static boolean initialized = false;
 
