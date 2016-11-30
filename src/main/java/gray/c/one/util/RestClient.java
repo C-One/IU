@@ -5,14 +5,13 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Created by jykang on 2016. 7. 14..
+ * Created by jykang on 2016. 11. 23..
  */
 @Slf4j
 @Configuration
@@ -22,7 +21,7 @@ public class RestClient {
 
     private static String host;
 
-    private static  String clientId;
+    private static String clientId;
 
     private static String clientSecret;
 
@@ -82,7 +81,7 @@ public class RestClient {
 
     public HttpResponse<String> searchByBlog(String keyword) {
         try {
-            return Unirest.get(host+"/blog.xml")
+            return Unirest.get(host + "/blog.xml")
                     .header("X-Naver-Client-Id", clientId)
                     .header("X-Naver-Client-Secret", clientSecret)
                     .header("Content-Type", "application/json;charset=UTF-8")

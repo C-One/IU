@@ -1,6 +1,8 @@
 package gray.c.one.service;
 
 import com.mashape.unirest.http.HttpResponse;
+import gray.c.one.model.Blog;
+import gray.c.one.util.Parser;
 import gray.c.one.util.RestClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,12 +25,14 @@ public class SearchServiceImpl implements SearchService{
         return "12시 30분";
     }
 
+
     @Override
-    public String searchByBlog(String keyword) {
+    public Blog searchByBlog(String keyword) {
 
         HttpResponse<String> response = restClient.searchByBlog(keyword);
 
-        return response.getBody();
+//        return response.getBody();
+        return Parser.xmlParser(response.getBody());
     }
 
 

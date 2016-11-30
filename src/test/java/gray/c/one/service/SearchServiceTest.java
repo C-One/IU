@@ -1,5 +1,6 @@
 package gray.c.one.service;
 
+import gray.c.one.model.Blog;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class SearchServiceTest {
     @Test
     public void test(){
 
-        String result= searchService.searchByBlog("클래시로얄");
+        Blog result= searchService.searchByBlog("클래시로얄");
 
         System.out.println(result);
 
