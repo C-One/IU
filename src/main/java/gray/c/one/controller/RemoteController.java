@@ -22,8 +22,8 @@ public class RemoteController {
     private RefineService refineService;
 
     @RequestMapping(value = "/test", method = RequestMethod.POST)
-    public ResponseEntity<String> receiveController(@RequestBody(required = false) Information information,
-                                                    @RequestParam(name = "message") String message) {
+    public String receiveController(@RequestBody(required = false) Information information,
+                                    @RequestParam(name = "message") String message) {
 
         if (InputCheck.check(message)) {
 
@@ -31,11 +31,13 @@ public class RemoteController {
 
             String result = searchService.search(refineMessage);
 
-            return new ResponseEntity<>(result, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
+            return result;
         }
+        return null;
+//        else {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//
+//        }
     }
 
 }
