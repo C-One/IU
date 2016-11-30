@@ -22,7 +22,7 @@ public class RemoteController {
     private RefineService refineService;
 
     @RequestMapping(value = "/test", method = RequestMethod.POST)
-    public ResponseEntity<String> receiveController(@RequestBody Information information,
+    public ResponseEntity<String> receiveController(@RequestBody(required = false) Information information,
                                                     @RequestParam(name = "message") String message) {
 
         if (InputCheck.check(message)) {
